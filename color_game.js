@@ -106,6 +106,7 @@ function randomColor(){
 function reset( numOfTiles){
 	resetButton.textContent = "New Colors";
 	h1.style.backgroundColor = "steelblue";
+	messageDisplay.textContent = "";
 
 	//generate all new colors
 	colors = generateRandomColors(numOfTiles);
