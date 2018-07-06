@@ -11,17 +11,22 @@ var hardBtn = document.querySelector("#hardBtn");
 var numSquares = 6;
 
 easyBtn.addEventListener("click", function(){
-	easyBtn.classList.add("selected");
-	hardBtn.classList.remove("selected");
-	numSquares = 3;
-	reset(numSquares);
+
+	if (numSquares === 6){
+		easyBtn.classList.add("selected");
+		hardBtn.classList.remove("selected");
+		numSquares = 3;
+		reset(numSquares);		
+	}
 
 })
 hardBtn.addEventListener("click", function(){
-	hardBtn.classList.add("selected");
-	easyBtn.classList.remove("selected");
-	numSquares = 6;
-	reset(numSquares);
+	if (numSquares === 3){
+		hardBtn.classList.add("selected");
+		easyBtn.classList.remove("selected");
+		numSquares = 6;
+		reset(numSquares);	
+	}
 })
 
 resetButton.addEventListener("click", function(){
@@ -100,7 +105,7 @@ function randomColor(){
 
 function reset( numOfTiles){
 	resetButton.textContent = "New Colors";
-	h1.style.backgroundColor = "#232323";
+	h1.style.backgroundColor = "steelblue";
 
 	//generate all new colors
 	colors = generateRandomColors(numOfTiles);
