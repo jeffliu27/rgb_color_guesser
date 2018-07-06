@@ -8,7 +8,20 @@ var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", function(){
-	alert("Clicked reset button")
+	resetButton.textContent = "New Colors";
+	h1.style.backgroundColor = "#232323";
+
+	//generate all new colors
+	colors = generateRandomColors(6);
+	//pick a new random color from array
+	pickedColor = pickColor();
+
+	//change color display to match changed color
+	colorDisplay.textContent = pickedColor;
+	//change colors of squares
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].style.backgroundColor = colors[i];
+	}
 })
 
 
@@ -24,9 +37,10 @@ for (var i = 0; i < squares.length; i++) {
 		var clickedColor = this.style.backgroundColor;
 		//compare color to picked color
 		if(clickedColor === pickedColor){
-			messageDisplay.textContent = "Correct"
+			messageDisplay.textContent = "Correct";
 			changeColors(clickedColor);
 			h1.style.backgroundColor = clickedColor;
+			resetButton.textContent = "Play Again?"
 		}
 		else{
 			this.style.backgroundColor = "#232323";
@@ -70,9 +84,9 @@ function randomColor(){
 	//pick green from 0-255
 	//pick blue from 0-255
 
-	var r = Math.floor(Math.random()*256)
-	var g = Math.floor(Math.random()*256)
-	var b = Math.floor(Math.random()*256)
+	var r = Math.floor(Math.random()*256);
+	var g = Math.floor(Math.random()*256);
+	var b = Math.floor(Math.random()*256);
 
 	//"rgb(r, g, b)"
 	return "rgb(" + r + ", " + g + ", " + b + ")";
